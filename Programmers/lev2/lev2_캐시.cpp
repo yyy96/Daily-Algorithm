@@ -34,7 +34,7 @@ int solution(int cacheSize, vector<string> cities) {
 			}
 		}
 
-		//존재x 새로운 도시를 넣고, 가장 used 가 적은걸 제외
+		//존재x 새로운 도시를 넣고, 가장 최근에 사용하지 않은 것 삭제
 		if (exist) continue;
 		sort(cache.begin(), cache.end(), compare);
 		cache.erase(cache.begin());
