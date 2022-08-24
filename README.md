@@ -24,6 +24,11 @@
 |1600|[말이 되고픈 원숭이](https://blog.naver.com/maui2005/222698730609)|
 |17136|[색종이 붙이기](https://blog.naver.com/maui2005/222645143919)|
 |1194|[달이 차오른다, 가자](https://blog.naver.com/maui2005/222854219428)|
+|9328|[열쇠](https://blog.naver.com/maui2005/222855499554)|
+|5582|[공통 부분 문자열](https://blog.naver.com/maui2005/222620730536)|
+|1238|[파티](https://blog.naver.com/maui2005/222619767980)|
+|1854|[k번째 최단경로 찾기](https://blog.naver.com/maui2005/222618605780)|
+|3055|[탈출](https://blog.naver.com/maui2005/222614248391)|
 
 #### 프로그래머스(Programmers)
 
