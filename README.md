@@ -29,6 +29,7 @@
 |1238|[파티](https://blog.naver.com/maui2005/222619767980)|
 |1854|[k번째 최단경로 찾기](https://blog.naver.com/maui2005/222618605780)|
 |3055|[탈출](https://blog.naver.com/maui2005/222614248391)|
+|13460|[구슬 탈출2](https://blog.naver.com/maui2005/222857731134)|
 
 #### 프로그래머스(Programmers)
 
