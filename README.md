@@ -7,7 +7,7 @@
 <br>
 <br>
 
-### 풀이 포스팅
+### 해설 포스팅
 
 #### 백준(Baekjoon)
 
@@ -31,6 +31,7 @@
 |3055|[탈출](https://blog.naver.com/maui2005/222614248391)|
 |13460|[구슬 탈출2](https://blog.naver.com/maui2005/222857731134)|
 |3190|[뱀](https://blog.naver.com/maui2005/222858841947)|
+|2493|[탑](https://blog.naver.com/maui2005/222870764013)|
 
 #### 프로그래머스(Programmers)
 
