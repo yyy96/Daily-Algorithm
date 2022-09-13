@@ -33,6 +33,7 @@
 |3190|[뱀](https://blog.naver.com/maui2005/222858841947)|
 |2493|[탑](https://blog.naver.com/maui2005/222870764013)|
 |9935|[문자열 폭발](https://blog.naver.com/maui2005/222872659509)|
+|1062|[가르침](https://blog.naver.com/maui2005/222873529982)|
 
 #### 프로그래머스(Programmers)
 
