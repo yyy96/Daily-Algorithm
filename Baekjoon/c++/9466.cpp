@@ -47,7 +47,7 @@ int main()
 			if (team[i]) continue;
 			dfs(0, i, i);
 		}
-		cout << total << endl;
+		cout << total << "\n";
 		memset(team, false, n + 1);
 	}
 	return 0;
