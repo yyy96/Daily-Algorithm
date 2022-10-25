@@ -7,7 +7,7 @@ using namespace std;
 int T, n;
 int student[MAX];
 int path[MAX];
-bool used[MAX] = { false, };
+bool dto[MAX] = { false, };
 bool team[MAX] = { false, };
 int total;
 
@@ -25,12 +25,12 @@ void dfs(int lev, int start, int now) {
 			team[path[i]] = true;
 		return;
 	}
-	if (used[now] || team[now]) return;
+	if (dto[now] || team[now]) return;
 
 	path[lev] = now;
-	used[now] = true;
+	dto[now] = true;
 	dfs(lev + 1, start, student[now]);
-	used[now] = false;
+	dto[now] = false;
 	path[lev] = 0;
 }
 
