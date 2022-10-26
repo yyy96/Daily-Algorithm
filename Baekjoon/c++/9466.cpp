@@ -1,14 +1,14 @@
 ﻿#include <iostream>
 #include <cstring>
 #include <algorithm>
-#define MAX 100001
+#define N 100001
 using namespace std;
 
 int T, n;
-int student[MAX];
-int path[MAX];
-bool dto[MAX] = { false, };
-bool team[MAX] = { false, };
+int student[N];
+int path[N];
+bool dto[N] = { false, };
+bool team[N] = { false, };
 int total;
 
 void dfs(int lev, int start, int now) {
