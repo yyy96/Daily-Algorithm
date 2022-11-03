@@ -19,23 +19,7 @@ int solution() {
 			return 0;
 	}
 
-	//조건2. 총 발생한 '무' 횟수는 홀수일 수 없다.
-	int same = 0;
-	for (int i = 0; i < 6; i++) {
-		same += team[i][1];
-	}
-	if (same % 2 != 0) return 0;
-
-	//조건2-1. 무가 짝수여도 나라의 개수가 홀 수이면 안된다.
-	int ssame = 0, scnt = 0;
-	for (int i = 0; i < 6; i++) {
-		if (team[i][1] != 0) scnt++;
-		if (scnt % 2 != 0) ssame += team[i][1];
-		else ssame -= team[i][1];
-	}
-	if (ssame != 0) return 0;
-
-	//조건3. 총 승 = 패의 수는 같아야한다.
+	//조건2. 총 승 = 패의 수는 같아야한다.
 	int win = 0, lose = 0;
 	for (int i = 0; i < 6; i++) {
 		win += team[i][0];
@@ -43,6 +27,21 @@ int solution() {
 	}
 	if (win != lose) return 0;
 
+	//조건3-1. 무의 총 횟수는 홀수일 수 없다.
+	int same = 0;
+	for (int i = 0; i < 6; i++) {
+		same += team[i][1];
+	}
+	if (same % 2 != 0) return 0;
+
+	//조건3-2. 무의 조합이 이루어져야한다.
+	same = 0;
+	for (int i = 0; i < 6; i++) {
+		if (same <=0 ) same += team[i][1];
+		else same -= team[i][1];
+	}
+	if (same != 0) return 0;
+	
 	return 1;
 }
 
