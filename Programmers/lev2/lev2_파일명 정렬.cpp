@@ -1,64 +1,67 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <vector>
 #include <algorithm>
 using namespace std;
 
-struct File {
+struct Files {
+	int idx;
 	string head;
-	string num;
-	string tail;
+	int num;
 };
 
-bool compare(File a, File b) {
-	//대소문자 맞추기
-	transform(a.head.begin(), a.head.end(), a.head.begin(), ::toupper);
-	transform(b.head.begin(), b.head.end(), b.head.begin(), ::toupper);
-	if (a.head > b.head) return false;
+bool compare(Files a, Files b) {
+	if (a.head < b.head) return true;
+	else if (a.head > b.head) return false;
 
-	int n1 = stoi(a.num);
-	int n2 = stoi(b.num);
-	return n1 < n2;
+	if (a.num < b.num) return true;
+	else if (a.num > b.num) return false;
+
+	return a.idx < b.idx;
+}
+
+vector<Files> splitInfo(vector<string> files) {
+	vector<Files> fileInfo;
+
+	for (int f = 0; f < files.size(); f++) {
+		string head = "", num = "", tail = ""; //tail은 정렬에서 활용되지 않음
+		int headLast = 0, numLast = 0;
+		//HEAD
+		for (int i = 0; i < files[f].length(); i++) {
+			if (files[f][i] >= '0' && files[f][i] <= '9') {
+				headLast = i - 1;
+				break;
+			}
+			head += files[f][i];
+		}
+		transform(head.begin(), head.end(), head.begin(), ::tolower);
+		//NUMBER
+		for (int i = headLast + 1; i <= files[f].length(); i++) {
+			if (i == files[f].length()) numLast = i - 1;
+			if (files[f][i] < '0' || files[f][i] > '9') {
+				numLast = i - 1;
+				break;
+			}
+			num += files[f][i];
+		}
+		fileInfo.push_back({ f, head, stoi(num) });
+	}
+	return fileInfo;
 }
 
 vector<string> solution(vector<string> files) {
 	vector<string> answer;
-	vector<File> file;
+	vector<Files> fileInfo = splitInfo(files);
 
-	//File 정리
-	for (int i = 0; i < files.size(); i++) {
-		string head, num, tail;
-		int h = 0;
-		for (h = 0; h < files[i].length(); h++) {
-			if ('0' > files[i][h] || files[i][h] > '9') continue;
-			head = files[i].substr(0, h);
-			break;
-		}
-		for (int n = h + 1; n < files[i].length(); n++) {
-			if ('0' <= files[i][n] && files[i][n] <= '9') continue;
-			num = files[i].substr(h, n - h);
-			tail = files[i].substr(n);
-			break;
-		}
-		file.push_back({ head, num, tail });
-	}
-	cout << endl;
-	sort(file.begin(), file.end(), compare);
-
-	//일치하는 것 나열
-	for (int i = 0; i < file.size(); i++) {
-		string strfile = file[i].head + file[i].num + file[i].tail;
-		answer.push_back(strfile);
-	}
-
+	sort(fileInfo.begin(), fileInfo.end(), compare);
+	for (int i = 0; i < fileInfo.size(); i++)
+		answer.push_back(files[fileInfo[i].idx]);
 	return answer;
 }
 
 int main() {
 	vector<string> files = { "img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG" };
-	vector<string> answer = solution(files);
-	for (int i = 0; i < answer.size(); i++)
-		cout << answer[i] << " ";
-
+	solution(files);
 	return 0;
 }
