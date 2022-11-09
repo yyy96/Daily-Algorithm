@@ -1,45 +1,57 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <queue>
 #include <sstream>
+#include <unordered_map>
+#include <vector>
 #include <algorithm>
 using namespace std;
 
-//효율성 시간초과 
-bool checkCondition(vector<string> conditions, vector<string> info) {
-	for (int i = 0; i < 4; i++) {
-		if (conditions[i] == "-") continue;
-		if (conditions[i] != info[i]) return false;
+unordered_map<string, vector<int>> scores;
+string infoes[4];
+string score;
+
+//해당 조건들에 대한 조합 (사용,무관)
+void dfs(int lev, int score, string info) {
+	if (lev == 4) {
+		scores[info].push_back(score);
+		return;
 	}
-	return true;
+	dfs(lev + 1, score, info + infoes[lev]);
+	dfs(lev + 1, score, info + '-');
 }
 
 vector<int> solution(vector<string> info, vector<string> query) {
 	vector<int> answer;
-	string lan, job, career, food, score, X;
 
-	for (int q = 0; q < query.size(); q++) {
-		int cnt = 0;
-		stringstream ssq(query[q]);
-		ssq >> lan >> X >> job >> X >> career >> X >> food >> score;
-		vector<string> conditions = { lan, job, career, food, score };
+	//info split
+	for (int i = 0; i < info.size(); i++) {
+		stringstream ss(info[i]);
+		ss >> infoes[0] >> infoes[1] >> infoes[2] >> infoes[3] >> score;
+		dfs(0, stoi(score), "");
+	}
 
-		for (int i = 0; i < info.size(); i++) {
-			stringstream ssi(info[i]);
-			ssi >> lan >> job >> career >> food >> score;
-			vector<string> infos = { lan, job, career, food, score };
+	//각 key에 해당하는 vector 정렬
+	for (auto i = scores.begin(); i != scores.end(); ++i)
+		sort(i->second.begin(), i->second.end());
 
-			if (stoi(conditions[4]) > stoi(infos[4])) continue;
-			if (checkCondition(conditions, infos)) cnt++;
+	//query에 해당하는 info 찾기
+	for (int i = 0; i < query.size(); i++) {
+		stringstream ss(query[i]);
+		string AND;
+		ss >> infoes[0] >> AND >> infoes[1] >> AND >> infoes[2] >> AND >> infoes[3] >> score;
+		
+		string key = infoes[0] + infoes[1] + infoes[2] + infoes[3];
+		if (scores.find(key) != scores.end()) {
+			auto lowIdx = lower_bound(scores[key].begin(), scores[key].end(), stoi(score));
+			answer.push_back(scores[key].size() - (lowIdx - scores[key].begin()));
 		}
-		answer.push_back(cnt);
+		else
+			answer.push_back(0);
 	}
 	return answer;
 }
 
 int main() {
-	//언어+" "+직군+" "+경력+" "+음식
 	vector<string> info = { "java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50" };
 	vector<string> query = { "java and backend and junior and pizza 100","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150" };
 	vector<int> answer = solution(info, query);
