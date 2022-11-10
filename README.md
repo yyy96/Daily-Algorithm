@@ -50,6 +50,8 @@
 |lev2|[거리두기 확인하기](https://blog.naver.com/maui2005/222813109595)|
 |lev2|[뉴스 클러스터링](https://blog.naver.com/maui2005/222810392588)|
 |lev2|[괄호 변환](https://blog.naver.com/maui2005/222809120184)|
+|lev3|[여행 경로](https://blog.naver.com/maui2005/222700526212)|
+|lev1|[비밀지도](https://blog.naver.com/maui2005/222802719798)|
 
 #### 기타(Etc)
 - 정올, 코드업 등의 타 플렛폼 문제를 업로드 합니다.
