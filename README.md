@@ -45,6 +45,7 @@
 
 |문제 분류|블로그 해설|
 |---|---|
+|lev3|[자물쇠와 열쇠](https://blog.naver.com/maui2005/222928690730)|
 |lev2|[순위 검색](https://blog.naver.com/maui2005/222820626134)|
 |lev2|[후보키](https://blog.naver.com/maui2005/222818820524)|
 |lev2|[거리두기 확인하기](https://blog.naver.com/maui2005/222813109595)|
